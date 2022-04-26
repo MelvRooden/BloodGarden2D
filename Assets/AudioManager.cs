@@ -5,6 +5,7 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
+    public AudioSource backgroundMusic;
     public static AudioManager instance;
 
     public void Awake()
@@ -34,9 +35,26 @@ public class AudioManager : MonoBehaviour
         Sound sound = Array.Find(sounds, sound => sound.name == name);
         if (sound == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
+            SoundNotFound(name);
             return;
         }
         sound.source.Play();
+    }
+
+    public void SetBackgroundMusic(string name)
+    {
+        Sound sound = Array.Find(sounds, sound => sound.name == name);
+        if (sound == null)
+        {
+            SoundNotFound(name);
+            return;
+        }
+        backgroundMusic.clip = sound.clip;
+        backgroundMusic.Play();
+    }
+
+    private void SoundNotFound(string name)
+    {
+        Debug.LogWarning("Sound: " + name + " not found!");
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - CheatUI
+  - CheatMenu
+  - AudioManager
   layers:
   - Default
   - TransparentFX

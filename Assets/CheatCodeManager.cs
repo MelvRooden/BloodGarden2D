@@ -127,4 +127,12 @@ public class CheatCodeManager : MonoBehaviour
         Transform player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         if (player != null) player.position = new Vector3(18.5f, -18.4f, 0f);
     }
+
+
+    // Eastereggs
+    public void CheatSlim(string musicName)
+    {
+        AudioManager audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        if (audioManager != null) audioManager.SetBackgroundMusic(musicName);
+    }
 }
