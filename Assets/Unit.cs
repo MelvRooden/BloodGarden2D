@@ -2,23 +2,34 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour, IUnit
 {
-    public int health = 100;
-    public float deathDelay = 0.5f;
-    public float respawnDelay = 5f;
-    public string takeHitAnimationName;
-    public string deathAnimationName;
+    [SerializeField]
+    private int health = 100;
+    [SerializeField]
+    private float deathDelay = 0.5f;
+    [SerializeField]
+    private float respawnDelay = 5f;
+    [SerializeField]
+    private string takeHitAnimationName;
+    [SerializeField]
+    private string deathAnimationName;
 
-    public Animator animator;
-    public GameObject remains;
-    public GameObject respawnUnit;
-    public GameController gameController;
-    public HealthBar healthBar;
+    [SerializeField]
+    private Animator animator;
+    [SerializeField]
+    private GameObject remains;
+    [SerializeField]
+    private GameObject respawnUnit;
+    [SerializeField]
+    private GameController gameController;
+    [SerializeField]
+    private HealthBar healthBar;
 
     private Vector3 startingPosition;
 
     public int GetHealth => health;
+    public Vector3 GetStartingPos => startingPosition;
 
-    public void Start()
+    private void Start()
     {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 
@@ -35,6 +46,13 @@ public class Unit : MonoBehaviour, IUnit
 
         if (health <= 0) Death();
         else animator.Play(takeHitAnimationName);
+    }
+
+    public void HealDamage(int damage)
+    {
+        health += damage;
+
+        if (healthBar) healthBar.SetHealth(health);
     }
 
     private void Death()

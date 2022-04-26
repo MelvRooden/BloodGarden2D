@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
     private float moveSpeed = 5f;
+    [SerializeField]
     private bool facingRight = true;
 
-    public Rigidbody2D rb;
-    public Animator animator;
+    [SerializeField]
+    private Rigidbody2D rb;
+    [SerializeField]
+    private Animator animator;
 
     private Vector2 movement;
 

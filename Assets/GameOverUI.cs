@@ -3,8 +3,10 @@ using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
-    public Text scoreTxt;
-    public GameController gameController;
+    [SerializeField]
+    private Text scoreTxt;
+    [SerializeField]
+    private GameController gameController;
 
     private void Start()
     {

@@ -14,12 +14,12 @@ public class CheatCodeManager : MonoBehaviour
     private CheatMenu cheatMenu;
 
 
-    public void Start()
+    private void Start()
     {
        cheatMenu = GameObject.FindWithTag("CheatUI").GetComponent<CheatMenu>();
     }
 
-    public void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -61,19 +61,19 @@ public class CheatCodeManager : MonoBehaviour
     // Cheats
     public void CheatPlayerFragile()
     {
-        Unit player = GameObject.FindWithTag("Player").GetComponent<Unit>();
-        if (player != null) player.health = 1;
+        IUnit player = GameObject.FindWithTag("Player").GetComponent<Unit>();
+        if (player != null) player.TakeDamage(player.GetHealth - 1);
     }
 
     public void CheatPlayerRobust()
     {
-        Unit player = GameObject.FindWithTag("Player").GetComponent<Unit>();
-        if (player != null) player.health = 9999;
+        IUnit player = GameObject.FindWithTag("Player").GetComponent<Unit>();
+        if (player != null) player.HealDamage(9999);
     }
 
     public void CheatPlayerDeath()
     {
-        Unit player = GameObject.FindWithTag("Player").GetComponent<Unit>();
+        IUnit player = GameObject.FindWithTag("Player").GetComponent<Unit>();
 
         if (player != null) player.TakeDamage(player.GetHealth);
     }
@@ -84,7 +84,10 @@ public class CheatCodeManager : MonoBehaviour
 
         if (enemies != null)
             foreach (GameObject enemy in enemies)
-                enemy.GetComponent<Unit>().health = 1;
+            {
+                IUnit enemyUnit = enemy.GetComponent<Unit>();
+                enemyUnit.TakeDamage(enemyUnit.GetHealth - 1);
+            }
     }
 
     public void CheatEnemiesRobust()
@@ -93,7 +96,10 @@ public class CheatCodeManager : MonoBehaviour
 
         if (enemies != null)
             foreach (GameObject enemy in enemies)
-                enemy.GetComponent<Unit>().health = 9999;
+            {
+                IUnit enemyUnit = enemy.GetComponent<Unit>();
+                enemyUnit.HealDamage(9999);
+            }
     }
 
     public void CheatEnemiesDeath()
@@ -103,8 +109,22 @@ public class CheatCodeManager : MonoBehaviour
         if (enemies != null)
             foreach (GameObject enemy in enemies)
             {
-                Unit enemyUnit = enemy.GetComponent<Unit>();
+                IUnit enemyUnit = enemy.GetComponent<Unit>();
                 enemyUnit.TakeDamage(enemyUnit.GetHealth);
             }
+    }
+
+
+    // Location Teleport
+    public void CheatPlayerStartingPos()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null) player.GetComponent<Transform>().position = player.GetComponent<Unit>().GetStartingPos;
+    }
+
+    public void CheatPlayerTPBench()
+    {
+        Transform player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        if (player != null) player.position = new Vector3(18.5f, -18.4f, 0f);
     }
 }

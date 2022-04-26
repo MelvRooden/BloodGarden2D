@@ -2,20 +2,25 @@ using UnityEngine;
 
 public class Sweep : MonoBehaviour
 {
-    public float speed = 20f;
+    [SerializeField]
+    private float speed = 20f;
+    [SerializeField]
     [Range(0.7f, 1f)]
-    public float range = 6f;
-    public int damage = 20;
-    public Rigidbody2D rb;
+    private float range = 6f;
+    [SerializeField]
+    private int damage = 20;
+
+    [SerializeField]
+    private Rigidbody2D rb;
 
 
     // Start is called before the first frame update
-    public void Start()
+    private void Start()
     {
         rb.velocity = transform.right * speed;
     }
 
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
         float x = transform.localScale.x;
         float y = transform.localScale.y;

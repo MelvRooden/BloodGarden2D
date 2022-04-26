@@ -3,9 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int score = 0;
+    [SerializeField]
+    private int score = 0;
 
-    public GameOverUI gameOverUI;
+    [SerializeField]
+    private GameOverUI gameOverUI;
 
     public void GameOver()
     {

@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PlayerAttack : BaseAttack
 {
-    public string attackTriggerName;
+    [SerializeField]
+    private string attackTriggerName;
 
     // Update is called once per frame
-    public void Update()
+    private void Update()
     {
         if (Input.GetButtonDown(attackTriggerName))
             Attack();

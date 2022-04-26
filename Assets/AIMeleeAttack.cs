@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class AIMeleeAttack : BaseAttack
 {
-    public float minAttackRange = 1.5f;
-    public float maxAttackRange = 2.2f;
+    [SerializeField]
+    private float minAttackRange = 1.5f;
+    [SerializeField]
+    private float maxAttackRange = 2.2f;
 
-    public Transform target;
+    [SerializeField]
+    private Transform target;
 
     private void Start()
     {

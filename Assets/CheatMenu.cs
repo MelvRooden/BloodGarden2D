@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class CheatMenu : MonoBehaviour
 {
-    public Text inputText;
+    [SerializeField]
+    private Text inputText;
 
     public bool IsActive => gameObject.activeSelf;
 

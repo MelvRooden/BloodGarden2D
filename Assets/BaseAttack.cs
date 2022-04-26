@@ -2,19 +2,28 @@ using UnityEngine;
 
 public class BaseAttack : MonoBehaviour, IAttack
 {
-    public string attackAnimationName;
-    public string attackAudioName;
+    [SerializeField]
+    private string attackAnimationName;
+    [SerializeField]
+    private string attackAudioName;
 
     // Delay modifiers
-    public float attackStartDelay;
-    public float attackDeployDelay;
-    public float attackMovementBlockDelay;
-    public float attackFinishDelay;
+    [SerializeField]
+    private float attackStartDelay;
+    [SerializeField]
+    private float attackDeployDelay;
+    [SerializeField]
+    private float attackMovementBlockDelay;
+    [SerializeField]
+    private float attackFinishDelay;
 
     // Unity assets
-    public Transform firePoint;
-    public GameObject attack;
-    public Animator animator;
+    [SerializeField]
+    private Transform firePoint;
+    [SerializeField]
+    private GameObject attack;
+    [SerializeField]
+    private Animator animator;
 
     public void Attack()
     {

@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class AIFollowTarget : MonoBehaviour
 {
-    public bool facingRight = true;
-    public float speed = 2f;
-    public float agroDistance = 7f;
-    public float advanceDistance = 2.2f;
-    public float retreatDistance = 1.5f;
+    [SerializeField]
+    private bool facingRight = true;
+    [SerializeField]
+    private float speed = 2f;
+    [SerializeField]
+    private float agroDistance = 7f;
+    [SerializeField]
+    private float advanceDistance = 2.2f;
+    [SerializeField]
+    private float retreatDistance = 1.5f;
 
-    public Transform target;
-    public Transform firePoint;
-    public Animator animator;
+    [SerializeField]
+    private Transform target;
+    [SerializeField]
+    private Animator animator;
+
 
     private void Start()
     {
