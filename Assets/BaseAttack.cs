@@ -32,6 +32,8 @@ public class BaseAttack : MonoBehaviour, IAttack
     }
     private void AttackStart()
     {
+        if (!gameObject.activeSelf) return;
+
         animator.Play(attackAnimationName);
         FindObjectOfType<AudioManager>().Play(attackAudioName);
     }

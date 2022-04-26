@@ -5,11 +5,11 @@ public class CheatMenu : MonoBehaviour
 {
     public Text inputText;
 
-    public bool IsActive => gameObject.active;
+    public bool IsActive => gameObject.activeSelf;
 
     public void ToggleMenu()
     {
-        gameObject.SetActive(!gameObject.active);
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
     public void SetInputText (string input)
